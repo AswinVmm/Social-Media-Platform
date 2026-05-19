@@ -17,6 +17,9 @@ export default function PostCard({ post, onDelete }: any) {
     const isAuthor = user?.id === post.authorId;
     const isAdmin = user?.role === "admin";
     const canDelete = isAuthor || isAdmin;
+    const score =
+        post.votes.filter((v: any) => v.type === "UP").length -
+        post.votes.filter((v: any) => v.type === "DOWN").length;
 
     const handleDelete = async () => {
         const confirmDelete = confirm("Are you sure you want to delete?");
@@ -67,7 +70,7 @@ export default function PostCard({ post, onDelete }: any) {
 
             {/* Actions */}
             <div className="mt-3">
-                <VoteButtons postId={post.id} />
+                <VoteButtons postId={post.id} initialScore={score} />
             </div>
 
         </div>
