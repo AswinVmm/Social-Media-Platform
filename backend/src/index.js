@@ -9,8 +9,6 @@ import postRoutes from "./routes/post.routes.js";
 import commentRoutes from "./routes/comment.routes.js";
 import voteRoutes from "./routes/vote.routes.js";
 
-// dotenv.config();
-
 const app = express();
 
 app.use(cors());
@@ -23,7 +21,7 @@ app.use("/api/post", postRoutes);
 app.use("/api/comment", commentRoutes);
 app.use("/api/vote", voteRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
