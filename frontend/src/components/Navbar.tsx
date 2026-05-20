@@ -67,17 +67,17 @@ export default function Navbar() {
                                 <Link href="/create-post">
                                     <button className="btn-primary">Create Post</button>
                                 </Link>
-
-                                <Link href="/profile">
-                                    <button className="btn-secondary">Profile</button>
-                                </Link>
                             </div>
 
-                            {/* 👤 Profile
+                            {/* 👤 Profile */}
                             <div className="flex items-center gap-2">
 
+                                <Link href="/profile" onClick={() => console.log("CLICKED PROFILE")} className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full cursor-pointer z-50">
+                                    {user.username?.charAt(0).toUpperCase()}
+                                </Link>
+
                                 <span className="font-medium">{user.username}</span>
-                            </div> */}
+                            </div>
 
                             {/* 🚪 Logout */}
                             <button onClick={logout} className="btn-danger ml-8">
