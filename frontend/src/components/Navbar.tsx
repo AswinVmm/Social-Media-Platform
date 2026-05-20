@@ -67,11 +67,11 @@ export default function Navbar() {
                                 <Link href="/create-post">
                                     <button className="btn-primary">Create Post</button>
                                 </Link>
-                            </div>
 
-                            <Link href="/profile">
-                                <button className="btn-secondary">Profile</button>
-                            </Link>
+                                <Link href="/profile">
+                                    <button className="btn-secondary">Profile</button>
+                                </Link>
+                            </div>
 
                             {/* 👤 Profile
                             <div className="flex items-center gap-2">
