@@ -73,11 +73,11 @@ export default function Navbar() {
                                 <button className="btn-secondary">Profile</button>
                             </Link>
 
-                            {/* 👤 Profile */}
+                            {/* 👤 Profile
                             <div className="flex items-center gap-2">
 
                                 <span className="font-medium">{user.username}</span>
-                            </div>
+                            </div> */}
 
                             {/* 🚪 Logout */}
                             <button onClick={logout} className="btn-danger ml-8">
