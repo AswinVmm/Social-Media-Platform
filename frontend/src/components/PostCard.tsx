@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import VoteButtons from "./VoteButtons";
 import Link from "next/link";
 import API from "@/lib/api";
@@ -18,6 +19,7 @@ export default function PostCard({ post, onDelete }: any) {
     const downvotes = post.votes.filter((v: any) => v.type === "DOWN").length;
     const isAuthor = user?.id === post.authorId;
     const isAdmin = user?.role === "admin";
+    const [showComments, setShowComments] = useState(false);
     const canDelete = isAuthor || isAdmin;
     const score =
         post.votes.filter((v: any) => v.type === "UP").length -
@@ -56,9 +58,6 @@ export default function PostCard({ post, onDelete }: any) {
                     <p className="text-gray-700 mt-2">
                         {post.content}
                     </p>
-                    {/* ✅ COMMENTS SECTION HERE */}
-                    <CommentSection postId={post.id} />
-
                 </div>
 
                 {/* ✅ SHOW ONLY IF AUTHOR */}
@@ -76,7 +75,22 @@ export default function PostCard({ post, onDelete }: any) {
             {/* Actions */}
             <div className="mt-3">
                 <VoteButtons postId={post.id} initialVotes={{ upvotes, downvotes }} />
+
+                {/* 💬 Comment Toggle */}
+                <button
+                    onClick={() => setShowComments(!showComments)}
+                    className="text-gray-600 hover:text-black text-sm flex items-center gap-1"
+                >
+                    💬 {post.comments?.length || 0} Comments
+                </button>
             </div>
+            {/* 💬 Comment Toggle */}
+            <button
+                onClick={() => setShowComments(!showComments)}
+                className="text-gray-600 hover:text-black text-sm flex items-center gap-1"
+            >
+                💬 {post.comments?.length || 0} Comments
+            </button>
 
         </div>
     );
