@@ -69,12 +69,12 @@ export default function Navbar() {
                                 </Link>
                             </div>
 
+                            <Link href="/profile">
+                                <button className="btn-secondary">Profile</button>
+                            </Link>
+
                             {/* 👤 Profile */}
                             <div className="flex items-center gap-2">
-
-                                <Link href="/profile">
-                                    <button className="btn-secondary">Profile</button>
-                                </Link>
 
                                 <span className="font-medium">{user.username}</span>
                             </div>
