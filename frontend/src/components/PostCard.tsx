@@ -4,6 +4,7 @@ import VoteButtons from "./VoteButtons";
 import Link from "next/link";
 import API from "@/lib/api";
 import { getUser } from "@/lib/auth";
+import CommentSection from "./CommentSection";
 
 type UserPayload = {
     id?: string;
@@ -55,6 +56,9 @@ export default function PostCard({ post, onDelete }: any) {
                     <p className="text-gray-700 mt-2">
                         {post.content}
                     </p>
+                    {/* ✅ COMMENTS SECTION HERE */}
+                    <CommentSection postId={post.id} />
+
                 </div>
 
                 {/* ✅ SHOW ONLY IF AUTHOR */}

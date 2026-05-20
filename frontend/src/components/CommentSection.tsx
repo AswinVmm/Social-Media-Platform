@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import API from "@/lib/api";
-import { getToken } from "@/lib/auth";
 
 export default function CommentSection({ postId }: any) {
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState<any[]>([]);
     const [text, setText] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const fetchComments = async () => {
         const res = await API.get(`/comment?postId=${postId}`);
@@ -15,28 +15,60 @@ export default function CommentSection({ postId }: any) {
 
     useEffect(() => {
         fetchComments();
-    }, []);
+    }, [postId]);
 
     const addComment = async () => {
-        await API.post(
-            "/comment",
-            { content: text, postId },
-            {
-                headers: { Authorization: getToken() },
-            }
-        );
+        if (!text.trim()) return;
 
-        fetchComments();
+        try {
+            setLoading(true);
+
+            await API.post("/comment", {
+                content: text,
+                postId,
+            });
+
+            setText("");
+            fetchComments(); // refresh instantly
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
-        <div>
-            <input onChange={(e) => setText(e.target.value)} placeholder="Add comment" />
-            <button onClick={addComment}>Post</button>
+        <div className="mt-4 border-t pt-3">
 
-            {comments.map((c: any) => (
-                <p key={c.id}>{c.content}</p>
-            ))}
+            {/* Add Comment */}
+            <div className="flex gap-2 mb-3">
+                <input
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    placeholder="Write a comment..."
+                    className="border px-2 py-1 w-full rounded"
+                />
+                <button
+                    onClick={addComment}
+                    disabled={loading}
+                    className="bg-orange-500 text-white px-3 rounded"
+                >
+                    Post
+                </button>
+            </div>
+
+            {/* Comments List */}
+            <div className="flex flex-col gap-2">
+                {comments.map((c) => (
+                    <div key={c.id} className="bg-gray-100 p-2 rounded">
+                        <p className="text-sm font-semibold">
+                            {c.author?.username || "User"}
+                        </p>
+                        <p className="text-sm">{c.content}</p>
+                    </div>
+                ))}
+            </div>
+
         </div>
     );
 }
