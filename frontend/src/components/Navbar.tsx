@@ -72,7 +72,7 @@ export default function Navbar() {
                             {/* 👤 Profile */}
                             <div className="flex items-center gap-2">
 
-                                <Link href="/profile" className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
+                                <Link href="/profile" onClick={() => console.log("CLICKED PROFILE")} className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full cursor-pointer z-50">
                                     {user.username?.charAt(0).toUpperCase()}
                                 </Link>
 
