@@ -8,7 +8,6 @@ import communityRoutes from "./routes/community.routes.js";
 import postRoutes from "./routes/post.routes.js";
 import commentRoutes from "./routes/comment.routes.js";
 import voteRoutes from "./routes/vote.routes.js";
-import commentRoutes from "./routes/comment.routes.js";
 
 const app = express();
 
@@ -21,7 +20,6 @@ app.use("/api/community", communityRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/comment", commentRoutes);
 app.use("/api/vote", voteRoutes);
-app.use("/api/comment", commentRoutes);
 
 const PORT = process.env.PORT;
 
