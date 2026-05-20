@@ -84,13 +84,10 @@ export default function PostCard({ post, onDelete }: any) {
                     💬 {post.comments?.length || 0} Comments
                 </button>
             </div>
-            {/* 💬 Comment Toggle */}
-            <button
-                onClick={() => setShowComments(!showComments)}
-                className="text-gray-600 hover:text-black text-sm flex items-center gap-1"
-            >
-                💬 {post.comments?.length || 0} Comments
-            </button>
+            {/* Toggle Comments */}
+            {showComments && (
+                <CommentSection postId={post.id} />
+            )}
 
         </div>
     );
