@@ -27,12 +27,8 @@ export const createPost = async (req, res) => {
 export const getPosts = async (req, res) => {
     const { sort, communityId } = req.query;
 
-    const posts = await prisma.post.findMany({
+    let posts = await prisma.post.findMany({
         where: communityId ? { communityId } : {},
-        orderBy:
-            sort === "popular"
-                ? { votes: { _count: "desc" } }
-                : { createdAt: "desc" },
         include: {
             votes: true,
             comments: true,
@@ -40,6 +36,25 @@ export const getPosts = async (req, res) => {
             author: true,
         },
     });
+
+    posts = posts.map(post => {
+        const score =
+            post.votes.filter(v => v.type === "UP").length -
+            post.votes.filter(v => v.type === "DOWN").length;
+
+        return { ...post, score };
+    });
+
+    // ✅ THEN SORT
+    if (sort === "popular") {
+        posts.sort((a, b) => b.score - a.score);
+    } else {
+        posts.sort(
+            (a, b) =>
+                new Date(b.createdAt).getTime() -
+                new Date(a.createdAt).getTime()
+        );
+    }
 
     res.json(posts);
 };

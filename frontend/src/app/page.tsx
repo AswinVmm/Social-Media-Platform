@@ -31,6 +31,7 @@ export default function Home() {
           <h1 className="text-2xl font-bold">Home</h1>
 
           <select
+            value={sort}
             className="border px-3 py-2 rounded-lg"
             onChange={(e) => setSort(e.target.value)}
           >

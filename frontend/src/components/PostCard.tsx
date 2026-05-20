@@ -21,9 +21,7 @@ export default function PostCard({ post, onDelete }: any) {
     const isAdmin = user?.role === "admin";
     const [showComments, setShowComments] = useState(false);
     const canDelete = isAuthor || isAdmin;
-    const score =
-        post.votes.filter((v: any) => v.type === "UP").length -
-        post.votes.filter((v: any) => v.type === "DOWN").length;
+    const score = post.score;
 
     const handleDelete = async () => {
         const confirmDelete = confirm("Are you sure you want to delete?");

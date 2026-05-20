@@ -51,6 +51,10 @@ export default function Navbar() {
                         </>
                     ) : (
                         <>
+                            <Link href="/">
+                                <button className="btn-secondary">Home</button>
+                            </Link>
+
                             <Link href="/communities">
                                 <button className="btn-secondary">Communities</button>
                             </Link>
