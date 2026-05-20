@@ -13,7 +13,8 @@ type UserPayload = {
 export default function PostCard({ post, onDelete }: any) {
 
     const user = getUser() as UserPayload | null;
-
+    const upvotes = post.votes.filter((v: any) => v.type === "UP").length;
+    const downvotes = post.votes.filter((v: any) => v.type === "DOWN").length;
     const isAuthor = user?.id === post.authorId;
     const isAdmin = user?.role === "admin";
     const canDelete = isAuthor || isAdmin;
@@ -70,7 +71,7 @@ export default function PostCard({ post, onDelete }: any) {
 
             {/* Actions */}
             <div className="mt-3">
-                <VoteButtons postId={post.id} initialScore={score} />
+                <VoteButtons postId={post.id} initialVotes={{ upvotes, downvotes }} />
             </div>
 
         </div>

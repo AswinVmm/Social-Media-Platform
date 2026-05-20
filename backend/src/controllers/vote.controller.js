@@ -2,7 +2,7 @@ import prisma from "../lib/prisma.js";
 
 export const votePost = async (req, res) => {
     const { postId, type } = req.body;
-    const userId = req.user.userId;
+    const userId = req.user.id;
 
     const existing = await prisma.vote.findFirst({
         where: { userId, postId },
@@ -24,18 +24,33 @@ export const votePost = async (req, res) => {
     // ✅ If no vote → create
     else {
         await prisma.vote.create({
-            data: { type, userId, postId },
+            data: {
+                type, user: { connect: { id: userId } },
+                post: { connect: { id: postId } },
+            },
         });
     }
 
     // ✅ RETURN UPDATED COUNT
-    const votes = await prisma.vote.findMany({
-        where: { postId },
+    // const votes = await prisma.vote.findMany({
+    //     where: { postId },
+    // });
+
+    // const score =
+    //     votes.filter(v => v.type === "UP").length -
+    //     votes.filter(v => v.type === "DOWN").length;
+
+    // res.json({ score });
+    const upvotes = await prisma.vote.count({
+        where: { postId, type: "UP" },
     });
 
-    const score =
-        votes.filter(v => v.type === "UP").length -
-        votes.filter(v => v.type === "DOWN").length;
+    const downvotes = await prisma.vote.count({
+        where: { postId, type: "DOWN" },
+    });
 
-    res.json({ score });
+    res.json({
+        upvotes,
+        downvotes,
+    });
 };
