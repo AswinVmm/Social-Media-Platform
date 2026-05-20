@@ -25,10 +25,15 @@ export const createPost = async (req, res) => {
 };
 
 export const getPosts = async (req, res) => {
-    const { sort, communityId } = req.query;
+    const { sort, communityId, authorId } = req.query;
+
+    let where = {};
+
+    if (communityId) where.communityId = communityId;
+    if (authorId) where.authorId = authorId;
 
     let posts = await prisma.post.findMany({
-        where: communityId ? { communityId } : {},
+        where,
         include: {
             votes: true,
             comments: true,
@@ -109,3 +114,4 @@ export const deletePost = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+

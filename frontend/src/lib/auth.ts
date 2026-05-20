@@ -1,4 +1,5 @@
 import { jwtDecode } from "jwt-decode";
+import { UserPayload } from "./types";
 
 export const setToken = (token: string) => {
     localStorage.setItem("token", token);
@@ -16,12 +17,12 @@ export const logoutUser = () => {
     window.dispatchEvent(new Event("authChanged"));
 };
 
-export const getUser = () => {
+export const getUser = (): UserPayload | null => {
     const token = localStorage.getItem("token");
     if (!token) return null;
 
     try {
-        return jwtDecode(token); // { id, username }
+        return jwtDecode<UserPayload>(token); // { id, username }
     } catch {
         return null;
     }

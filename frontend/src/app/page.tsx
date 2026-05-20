@@ -30,6 +30,9 @@ export default function Home() {
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Home</h1>
 
+          <h1 className="text-2xl font-bold">
+            {sort === "latest" ? "🆕 Latest Posts" : "🔥 Trending Posts"}
+          </h1>
           <select
             value={sort}
             className="border px-3 py-2 rounded-lg"

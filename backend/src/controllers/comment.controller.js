@@ -20,13 +20,17 @@ export const addComment = async (req, res) => {
 };
 
 export const getComments = async (req, res) => {
-    const { postId } = req.query;
+    const { postId, userId } = req.query;
 
     const comments = await prisma.comment.findMany({
-        where: { postId },
+        where: {
+            ...(postId && { postId }),
+            ...(userId && { authorId: userId }),
+        },
         include: { author: true },
         orderBy: { createdAt: "desc" },
     });
+
 
     res.json(comments);
 };

@@ -72,7 +72,9 @@ export default function Navbar() {
                             {/* 👤 Profile */}
                             <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 bg-orange-500 text-white flex items-center justify-center rounded-full">
-                                    {user.username?.charAt(0).toUpperCase()}
+                                    <Link href="/profile">
+                                        <button className="btn-secondary">{user.username?.charAt(0).toUpperCase()}</button>
+                                    </Link>
                                 </div>
                                 <span className="font-medium">{user.username}</span>
                             </div>
