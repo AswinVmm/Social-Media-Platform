@@ -7,19 +7,21 @@ import PostCard from "@/components/PostCard";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 export default function Profile() {
-    const user = getUser();
+    const [user, setUser] = useState<any>(null);
     const [posts, setPosts] = useState<any[]>([]);
     const [comments, setComments] = useState<any[]>([]);
 
     useEffect(() => {
-        if (!user) return;
+        const currentUser = getUser(); // ✅ now runs ONLY in browser
+        setUser(currentUser);
 
-        fetchUserData();
+        if (currentUser) {
+            fetchUserData(currentUser);
+        }
     }, []);
 
-    const fetchUserData = async () => {
+    const fetchUserData = async (user: any) => {
         try {
-            if (!user) return;
             const postRes = await API.get(`/post?authorId=${user.id}`);
             const commentRes = await API.get(`/comment?userId=${user.id}`);
 
@@ -38,13 +40,11 @@ export default function Profile() {
                     👤 {user?.username}
                 </h1>
 
-                {/* POSTS */}
                 <h2 className="text-lg font-semibold mt-6 mb-2">Posts</h2>
                 {posts.map((post) => (
                     <PostCard key={post.id} post={post} />
                 ))}
 
-                {/* COMMENTS */}
                 <h2 className="text-lg font-semibold mt-6 mb-2">Comments</h2>
                 {comments.map((c) => (
                     <div key={c.id} className="border p-2 rounded mb-2">
