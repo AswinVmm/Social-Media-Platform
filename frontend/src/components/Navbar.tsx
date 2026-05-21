@@ -42,7 +42,7 @@ export default function Navbar() {
                     {!user ? (
                         <>
                             <Link href="/login">
-                                <button className="btn-secondary">Login</button>
+                                <button className="btn-primary">Login</button>
                             </Link>
 
                             <Link href="/signup">
