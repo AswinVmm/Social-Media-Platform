@@ -38,7 +38,7 @@ export default function CommentSection({ postId }: any) {
     };
 
     return (
-        <div className="mt-4 border-t pt-3">
+        <div className="mt-4 bg-gray-50 border-t pt-3 rounded-xl">
 
             {/* Add Comment */}
             <div className="flex gap-2 mb-3">
@@ -46,7 +46,7 @@ export default function CommentSection({ postId }: any) {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder="Write a comment..."
-                    className="border px-2 py-1 w-full rounded"
+                    className="border px-3 py-2 w-full rounded-lg bg-white"
                 />
                 <button
                     onClick={addComment}
@@ -60,7 +60,7 @@ export default function CommentSection({ postId }: any) {
             {/* Comments List */}
             <div className="flex flex-col gap-2">
                 {comments.map((c) => (
-                    <div key={c.id} className="bg-gray-100 p-2 rounded">
+                    <div key={c.id} className="bg-gray-100 p-3 shadow-sm rounded-lg">
                         <p className="text-sm font-semibold">
                             {c.author?.username || "User"}
                         </p>

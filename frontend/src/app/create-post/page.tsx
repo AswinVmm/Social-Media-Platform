@@ -52,43 +52,43 @@ export default function CreatePost() {
     };
 
     return (
-        <div className="max-w-xl mx-auto mt-10 flex flex-col gap-3">
+        <div className="bg-white p-6 rounded-2xl shadow-md gap-4 mx-auto mt-10 flex flex-col">
 
             <h1 className="text-xl font-bold">Create Post</h1>
 
             {error && <p className="text-red-500">{error}</p>}
 
             <div className="flex gap-2 mt-2">
-                <button onClick={() => setPostType("text")} className="border px-3 py-1 rounded">
+                <button onClick={() => setPostType("text")} className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition">
                     Text
                 </button>
-                <button onClick={() => setPostType("image")} className="border px-3 py-1 rounded">
+                <button onClick={() => setPostType("image")} className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg transition">
                     Image
                 </button>
-                <button onClick={() => setPostType("link")} className="border px-3 py-1 rounded">
+                <button onClick={() => setPostType("link")} className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg transition">
                     Link
                 </button>
-                <button onClick={() => setPostType("poll")} className="border px-3 py-1 rounded">
+                <button onClick={() => setPostType("poll")} className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg transition">
                     Poll
                 </button>
             </div>
 
             <input
                 placeholder="Title"
-                className="border p-2"
+                className="border p-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 onChange={(e) => setTitle(e.target.value)}
             />
 
             <textarea
                 placeholder="Description"
-                className="border p-2"
+                className="border p-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 onChange={(e) => setContent(e.target.value)}
             />
 
             {postType === "image" && (
                 <input
                     placeholder="Image URL"
-                    className="border p-2"
+                    className="border p-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     onChange={(e) => setImageUrl(e.target.value)}
                 />
             )}
@@ -96,7 +96,7 @@ export default function CreatePost() {
             {postType === "link" && (
                 <input
                     placeholder="Enter link"
-                    className="border p-2"
+                    className="border p-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     value={link}
                     onChange={(e) => setLink(e.target.value)}
                 />
@@ -104,13 +104,13 @@ export default function CreatePost() {
 
             {postType === "poll" && (
                 <div className="flex flex-col gap-2">
-                    <input placeholder="Option 1" className="border p-2" />
-                    <input placeholder="Option 2" className="border p-2" />
+                    <input placeholder="Option 1" className="border p-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                    <input placeholder="Option 2" className="border p-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400" />
                 </div>
             )}
 
             <select
-                className="border p-2"
+                className="border p-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 onChange={(e) => {
                     if (e.target.value === "new") {
                         router.push("/create-community");
@@ -134,7 +134,7 @@ export default function CreatePost() {
 
             <button
                 onClick={handleCreate}
-                className="bg-blue-500 text-white p-2 rounded disabled:opacity-50"
+                className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition"
                 disabled={!title || !communityId}
             >
                 Create Post

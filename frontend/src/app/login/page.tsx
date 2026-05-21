@@ -4,7 +4,6 @@ import { useState } from "react";
 import API from "@/lib/api";
 import { setToken } from "@/lib/auth";
 import { useRouter } from "next/navigation";
-// import error from "next/dist/api/error";
 
 export default function Login() {
     const router = useRouter();
@@ -34,20 +33,23 @@ export default function Login() {
     };
 
     return (
-        <div className="flex flex-col items-center mt-20 gap-4">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
             {error && (
                 <p className="text-red-500 text-sm">{error}</p>
             )}
-            <input
-                className="border p-2 rounded w-64"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input className="border p-2 rounded w-64" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+            <div className="bg-white p-8 rounded-2xl shadow-md w-80 flex flex-col gap-4">
+                <h1 className="text-xl font-bold text-center">Login</h1>
+                <input
+                    className="border p-2 rounded-lg"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input className="border p-2 rounded-lg" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
 
-            <button onClick={handleLogin} className="bg-green-500 text-white px-4 py-2">
-                Login
-            </button>
+                <button onClick={handleLogin} className="bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">
+                    Login
+                </button>
+            </div>
         </div>
     );
 }

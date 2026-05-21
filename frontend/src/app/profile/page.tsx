@@ -35,10 +35,14 @@ export default function Profile() {
     return (
         <ProtectedRoute>
             <div className="max-w-3xl mx-auto mt-10">
-
-                <h1 className="text-2xl font-bold mb-4">
-                    👤 {user?.username}
-                </h1>
+                <div className="bg-white p-6 rounded-2xl shadow-sm border">
+                    <h1 className="text-2xl font-bold mb-4">
+                        👤 {user?.username}
+                    </h1>
+                    <p className="text-gray-500 text-sm mt-1">
+                        Your activity overview
+                    </p>
+                </div>
 
                 <h2 className="text-lg font-semibold mt-6 mb-2">Posts</h2>
                 {posts.map((post) => (

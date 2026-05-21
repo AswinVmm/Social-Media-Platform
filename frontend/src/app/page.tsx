@@ -27,15 +27,14 @@ export default function Home() {
       <div className="flex flex-col gap-4">
 
         {/* Header */}
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Home</h1>
+        <div className="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm">
 
           <h1 className="text-2xl font-bold">
-            {sort === "latest" ? "🆕 Latest Posts" : "🔥 Trending Posts"}
+            {sort === "latest" ? "🆕 Latest Posts" : "🔥 Trending"}
           </h1>
           <select
             value={sort}
-            className="border px-3 py-2 rounded-lg"
+            className="border px-3 py-2 rounded-lg bg-gray-50"
             onChange={(e) => setSort(e.target.value)}
           >
             <option value="latest">Latest</option>

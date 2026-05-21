@@ -35,7 +35,7 @@ export default function PostCard({ post, onDelete }: any) {
     };
 
     return (
-        <div className="bg-white p-4 rounded-xl shadow-sm border mt-4 hover:shadow-md transition">
+        <div className="bg-white p-4 rounded-2xl shadow-sm border mt-4 hover:shadow-md transition">
 
             <div className="flex justify-between items-start">
 
@@ -46,14 +46,14 @@ export default function PostCard({ post, onDelete }: any) {
                     </p>
 
                     {/* Title */}
-                    <h2 className="text-lg font-semibold mt-1">
+                    <h2 className="text-lg font-semibold mt-1 hover:text-blue-600 cursor-pointer">
                         <Link href={`/post/${post.id}`}>
                             {post.title}
                         </Link>
                     </h2>
 
                     {/* Content */}
-                    <p className="text-gray-700 mt-2">
+                    <p className="text-gray-600 mt-2 leading-relaxed">
                         {post.content}
                     </p>
                 </div>
@@ -71,13 +71,13 @@ export default function PostCard({ post, onDelete }: any) {
             </div>
 
             {/* Actions */}
-            <div className="mt-3">
+            <div className="flex items-center justify-between mt-4 border-t pt-3">
                 <VoteButtons postId={post.id} initialVotes={{ upvotes, downvotes }} />
-
+                {/* flex items-center gap-1 */}
                 {/* 💬 Comment Toggle */}
                 <button
                     onClick={() => setShowComments(!showComments)}
-                    className="text-gray-600 hover:text-black text-sm flex items-center gap-1"
+                    className="text-gray-500 hover:text-black text-sm "
                 >
                     💬 {post.comments?.length || 0} Comments
                 </button>

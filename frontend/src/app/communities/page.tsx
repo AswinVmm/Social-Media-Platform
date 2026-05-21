@@ -11,18 +11,18 @@ export default function Communities() {
         API.get("/community").then((res) =>
             setCommunities(res.data)
         );
-        // API.get(`/post?communityId=${communities.id}`);
     }, []);
 
     return (
         <div className="max-w-3xl mx-auto mt-10">
             <h1 className="text-2xl font-bold mb-4">Communities</h1>
 
-            <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {communities.map((c: any) => (
                     <Link key={c.id} href={`/com/${c.slug}`}>
-                        <div className="border p-3 rounded hover:bg-gray-100 cursor-pointer">
-                            r/{c.slug}
+                        <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer">
+                            <h2 className="font-semibold text-lg">r/{c.slug}</h2>
+                            <p className="text-gray-500 text-sm">Community</p>
                         </div>
                     </Link>
                 ))}
