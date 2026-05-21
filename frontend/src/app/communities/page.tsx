@@ -20,7 +20,7 @@ export default function Communities() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {communities.map((c: any) => (
                     <Link key={c.id} href={`/com/${c.slug}`}>
-                        <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer">
+                        <div className="bg-gray-200 hover:bg-gray-400 p-4 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer">
                             <h2 className="font-semibold text-lg">r/{c.slug}</h2>
                             <p className="text-gray-500 text-sm">Community</p>
                         </div>

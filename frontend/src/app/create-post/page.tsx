@@ -52,23 +52,23 @@ export default function CreatePost() {
     };
 
     return (
-        <div className="bg-white p-6 rounded-2xl shadow-md gap-4 mx-auto mt-10 flex flex-col">
+        <div className="bg-white p-6 border-3 rounded-2xl shadow-md gap-4 mx-auto mt-3 flex flex-col">
 
             <h1 className="text-xl font-bold">Create Post</h1>
 
             {error && <p className="text-red-500">{error}</p>}
 
             <div className="flex gap-2 mt-2">
-                <button onClick={() => setPostType("text")} className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition">
+                <button onClick={() => setPostType("text")} className="bg-gray-200 hover:bg-blue-600 text-gray-800 px-5 py-2 w-20 rounded-lg transition">
                     Text
                 </button>
-                <button onClick={() => setPostType("image")} className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg transition">
+                <button onClick={() => setPostType("image")} className="bg-gray-200 hover:bg-blue-600 text-gray-800 px-3 py-2 w-20 rounded-lg transition">
                     Image
                 </button>
-                <button onClick={() => setPostType("link")} className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg transition">
+                <button onClick={() => setPostType("link")} className="bg-gray-200 hover:bg-blue-600 text-gray-800 px-3 py-2 w-20 rounded-lg transition">
                     Link
                 </button>
-                <button onClick={() => setPostType("poll")} className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg transition">
+                <button onClick={() => setPostType("poll")} className="bg-gray-200 hover:bg-blue-600 text-gray-800 px-3 py-2 w-20 rounded-lg transition">
                     Poll
                 </button>
             </div>
@@ -134,7 +134,7 @@ export default function CreatePost() {
 
             <button
                 onClick={handleCreate}
-                className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition"
+                className="bg-blue-500 hover:bg-green-600 text-white py-2 rounded-lg transition"
                 disabled={!title || !communityId}
             >
                 Create Post

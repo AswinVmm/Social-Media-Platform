@@ -33,7 +33,7 @@ export default function CreateCommunity() {
 
     return (
         <ProtectedRoute>
-            <div className="flex flex-col items-center mt-20 gap-4">
+            <div className="flex flex-col items-center border-3 rounded-2xl w-1/2 ml-auto mr-auto shadow-md mt-20 p-2 gap-4">
 
                 <h1 className="text-2xl font-bold">Create Community</h1>
 
@@ -47,7 +47,7 @@ export default function CreateCommunity() {
 
                 <button
                     onClick={handleCreate}
-                    className="bg-orange-500 text-white px-4 py-2 rounded"
+                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
                 >
                     Create
                 </button>

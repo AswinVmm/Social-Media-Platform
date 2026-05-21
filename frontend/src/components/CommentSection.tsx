@@ -51,7 +51,7 @@ export default function CommentSection({ postId }: any) {
                 <button
                     onClick={addComment}
                     disabled={loading}
-                    className="bg-orange-500 text-white px-3 rounded"
+                    className="bg-green-500 text-white px-3 rounded-3xl hover:bg-green-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
                     Post
                 </button>

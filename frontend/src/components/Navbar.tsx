@@ -30,8 +30,8 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="bg-white border-b shadow-md sticky top-0 z-50 relative">
-            <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <nav className="bg-gray-800 border-b shadow-md sticky top-0 z-50 relative">
+            <div className="max-w-full mx-auto px-4 py-3 flex justify-between items-center">
 
                 <Link href="/" className="text-xl font-bold text-orange-500">
                     Social Media Platform
@@ -53,10 +53,10 @@ export default function Navbar() {
                         <>
 
                             <Link href="/communities" className="text-gray-700 hover:text-black">
-                                <button className="btn-secondary">Communities</button>
+                                <button className="btn-primary">Communities</button>
                             </Link>
 
-                            <div className="flex gap-2">
+                            <div className="flex gap-4">
                                 <Link href="/create-community">
                                     <button className="btn-primary">Create Community</button>
                                 </Link>
@@ -69,11 +69,11 @@ export default function Navbar() {
                             {/* 👤 Profile */}
                             <div className="flex items-center gap-2">
 
-                                <Link href="/profile" className="w-9 h-9 bg-orange-500 text-white flex items-center justify-center rounded-full font-bold cursor-pointer hover:scale-105 transition">
+                                <Link href="/profile" className="w-9 h-9 bg-green-500 text-white flex items-center justify-center rounded-full font-bold cursor-pointer hover:scale-105 transition">
                                     {user.username?.charAt(0).toUpperCase()}
                                 </Link>
 
-                                <span className="font-medium">{user.username}</span>
+                                <span className="font-medium text-amber-50">{user.username}</span>
                             </div>
 
                             {/* 🚪 Logout */}

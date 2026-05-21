@@ -62,7 +62,7 @@ export default function PostCard({ post, onDelete }: any) {
                 {canDelete && (
                     <button
                         onClick={handleDelete}
-                        className="text-red-500 text-sm"
+                        className="text-white hover:text-black bg-red-600 text-sm p-3 rounded-lg"
                     >
                         Delete
                     </button>
