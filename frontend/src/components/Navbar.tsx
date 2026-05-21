@@ -26,7 +26,7 @@ export default function Navbar() {
 
     const logout = () => {
         logoutUser();
-        router.push("/login");
+        router.push("/signup");
     };
 
     return (
