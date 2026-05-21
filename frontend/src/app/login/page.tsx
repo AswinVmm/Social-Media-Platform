@@ -33,7 +33,7 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-full flex items-center justify-center bg-gray-100">
+        <div className="min-h-1/2 flex items-center justify-center bg-gray-100">
             {error && (
                 <p className="text-red-500 text-sm">{error}</p>
             )}
