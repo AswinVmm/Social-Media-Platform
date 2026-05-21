@@ -41,12 +41,8 @@ export default function Navbar() {
 
                     {!user ? (
                         <>
-                            <Link href="/login">
-                                <button className="btn-primary">Login</button>
-                            </Link>
-
                             <Link href="/signup">
-                                <button className="btn-primary">Sign Up</button>
+                                <button className="btn-primary">Login/Sign Up</button>
                             </Link>
                         </>
                     ) : (
